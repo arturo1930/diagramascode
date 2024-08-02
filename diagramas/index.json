@@ -1,0 +1,22 @@
+[
+    {
+      "nombre": "BPMN",
+      "tipo": "bpmn",
+      "archivo": "proceso_negocio.bpmn"
+    },
+    {
+      "nombre": "Mermaid",
+      "tipo": "mermaid",
+      "archivo": "flujo_trabajo.mmd"
+    },
+    {
+      "nombre": "Plant UML",
+      "tipo": "plantuml",
+      "archivo": "diagrama_clases.puml"
+    },
+    {
+      "nombre": "Exacalidraw",
+      "tipo": "excalidraw",
+      "archivo": "boceto.excalidraw"
+    }
+  ]

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Excalidraw in browser</title>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/@excalidraw/excalidraw/dist/excalidraw.development.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Excalidraw Embed Example</h1>
+      https://docs.excalidraw.com/docs/@excalidraw/excalidraw/api/children-components/main-menu
+      <div id="app"></div>
+    </div>
+    
+    <script>
+      const App = () => {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      "div",
+      {
+        style: { height: "500px" },
+      },
+      React.createElement(ExcalidrawLib.Excalidraw,{
+            viewModeEnabled: true,
+            initialData: {
+              elements: [
+                {
+                  type: "rectangle",
+                  version: 141,
+                  versionNonce: 361174001,
+                  isDeleted: false,
+                  id: "oDVXy8D6rom3H1-LLH2-f",
+                  fillStyle: "hachure",
+                  strokeWidth: 1,
+                  strokeStyle: "solid",
+                  roughness: 1,
+                  opacity: 100,
+                  angle: 0,
+                  x: 100.50390625,
+                  y: 93.67578125,
+                  strokeColor: "#000000",
+                  backgroundColor: "transparent",
+                  width: 186.47265625,
+                  height: 141.9765625,
+                  seed: 1968410350,
+                  groupIds: [],
+                },
+              ],
+              appState: {
+                zenModeEnabled: true,
+                viewBackgroundColor: "#a5d8ff",
+              },
+              scrollToContent: true,
+            },
+          }),
+    ),
+  );
+};
+
+const excalidrawWrapper = document.getElementById("app");
+const root = ReactDOM.createRoot(excalidrawWrapper);
+root.render(React.createElement(App));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Diagramas Mejorado</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bpmn-js/9.0.3/bpmn-viewer.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.14.0/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plantuml-encoder/1.4.0/plantuml-encoder.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/panzoom/9.4.3/panzoom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/excalidraw/0.15.2/excalidraw.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mxgraph/4.2.2/mxgraph.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow: hidden;
+        }
+        #diagram-container {
+            width: 100%;
+            height: calc(100vh - 40px);
+            border: 1px solid #ccc;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .diagram-item {
+            cursor: pointer;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .diagram-item:hover {
+            background-color: #2980b9;
+        }
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .zoom-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .zoom-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>Diagramas</h1>
+            <div id="sidebar-content">
+                <!-- Los elementos del menú se agregarán dinámicamente aquí -->
+            </div>
+        </div>
+        <div class="main-content">
+            <div id="diagram-container"></div>
+            <div class="zoom-controls">
+                <button class="zoom-btn" onclick="zoomIn()">+</button>
+                <button class="zoom-btn" onclick="zoomOut()">-</button>
+                <button class="zoom-btn" onclick="resetZoom()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Excalidraw</title>
+  <meta charset="UTF-8" />
+  <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@excalidraw/excalidraw/dist/excalidraw.development.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    async function getDiagramDataURL() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('diagram')) {
+        const diagramFileName = decodeURIComponent(params.get('diagram'));
+        try {
+          const response = await fetch(`./diagramas/${diagramFileName}`);
+          if (!response.ok) {
+            throw new Error("No se pudo cargar el contenido del diagrama");
+          }
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error('Error fetching Excalidraw JSON:', error);
+        }
+      }
+      return null;
+    }
+
+    const App = () => {
+      const [initialData, setInitialData] = React.useState(null);
+
+      React.useEffect(() => {
+        const fetchData = async () => {
+          const data = await getDiagramDataURL();
+          if (data) {
+            setInitialData(data);
+          }
+        };
+
+        fetchData();
+      }, []);
+
+      if (!initialData) {
+        return React.createElement("div", null, "Loading...");
+      }
+
+      return React.createElement(
+        "div",
+        { style: { height: "500px" } },
+        React.createElement(ExcalidrawLib.Excalidraw, {
+          viewModeEnabled: true,
+          initialData: initialData,
+        })
+      );
+    };
+
+    const excalidrawWrapper = document.getElementById("app");
+    const root = ReactDOM.createRoot(excalidrawWrapper);
+    root.render(React.createElement(App));
+  </script>
+</body>
+</html>

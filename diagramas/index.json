@@ -18,5 +18,10 @@
       "nombre": "Exacalidraw",
       "tipo": "excalidraw",
       "archivo": "boceto.excalidraw"
+    },
+    {
+      "nombre": "Readme",
+      "tipo": "md",
+      "archivo": "readme.md"
     }
   ]
